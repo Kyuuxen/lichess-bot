@@ -1,9 +1,9 @@
-token: "xxxxxxxxxxxxxxxxxxxxxx"    # Lichess OAuth2 Token.
+token: "lip_Jn1jWydAvdVPJKoVsNde"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
   dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "engine_name"              # Binary name of the engine to use.
+  name: "OpenTal"              # Binary name of the engine to use.
 # interpreter: "java"
 # interpreter_options:
 #   - "-jar"
@@ -28,7 +28,7 @@ engine:                            # Engine settings.
     max_depth: 20                  # How many moves from the start to take from the book.
 
   draw_or_resign:
-    resign_enabled: false          # Whether or not the bot should resign.
+    resign_enabled: true          # Whether or not the bot should resign.
     resign_score: -1000            # If the score is less than or equal to this value, the bot resigns (in cp).
     resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
     resign_moves: 3                # How many moves in a row the score has to be below the resign value.
@@ -83,18 +83,18 @@ engine:                            # Engine settings.
       min_dtm_to_consider_as_wdl_1: 120 # The minimum DTM to consider as syzygy WDL=1/-1. Set to 100 to disable.
       move_quality: "best"         # One of "best" or "suggest" (it takes all the moves with the same WDL and tells the engine to only consider these; will move instantly if there is only 1 "good" move).
 
-# engine_options:                  # Any custom command line params to pass to the engine.
-#   cpuct: 3.1
+   # engine_options:
+
 
   homemade_options:
 #   Hash: 256
 
   uci_options:                     # Arbitrary UCI options passed to the engine.
-    Move Overhead: 100             # Increase if your bot flags games too often.
-    Threads: 4                     # Max CPU threads the engine can use.
+    # Move Overhead: 100             # Increase if your bot flags games too often.
+    # Threads: 4                     # Max CPU threads the engine can use.
     Hash: 512                      # Max memory (in megabytes) the engine can allocate.
-    SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
-    UCI_ShowWDL: true              # Show the chance of the engine winning.
+   # SyzygyPath: "./syzygy/"        # Paths to Syzygy endgame tablebases that the engine reads.
+    # UCI_ShowWDL: true              # Show the chance of the engine winning.
 #   go_commands:                   # Additional options to pass to the UCI go command.
 #     nodes: 1                     # Search so many nodes only.
 #     depth: 5                     # Search depth ply only.
@@ -169,6 +169,7 @@ challenge:                         # Incoming challenges.
 # recent_bot_challenge_age: 60     # Maximum age of a bot challenge to be considered recent in seconds
 # max_recent_bot_challenges: 2     # Maximum number of recent challenges that can be accepted from the same bot
   bullet_requires_increment: false # Require that bullet game challenges from bots have a non-zero increment
+  max_simultaneous_games_per_user: 5  # Maximum number of simultaneous games with the same user
 
 greeting:
   # Optional substitution keywords (include curly braces):
@@ -187,7 +188,7 @@ greeting:
                                    # "all" - every game is written to a single file named "{Bot name} games.pgn"
 
 matchmaking:
-  allow_matchmaking: false         # Set it to 'true' to challenge other bots.
+  allow_matchmaking: 'true'         # Set it to 'true' to challenge other bots.
   allow_during_games: false        # Set it to 'true' to create challenges during long games.
   challenge_variant: "random"      # If set to 'random', the bot will choose one variant from the variants enabled in 'challenge.variants'.
   challenge_timeout: 30            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
@@ -205,7 +206,7 @@ matchmaking:
   opponent_rating_difference: 300  # The maximum difference in rating between the bot's rating and opponent's rating.
   rating_preference: "none"        # One of "none", "high", "low".
   opponent_allow_tos_violation: false # Set to 'true' to allow challenging bots that violated the Lichess Terms of Service.
-  challenge_mode: "random"         # Set it to the mode in which challenges are sent. Possible options are 'casual', 'rated' and 'random'.
+  challenge_mode: "rated"         # Set it to the mode in which challenges are sent. Possible options are 'casual', 'rated' and 'random'.
   challenge_filter: none           # If a bot declines a challenge, do not issue a similar challenge to that bot. Possible options are 'none', 'coarse', and 'fine'.
 # block_list:                      # The list of bots that will not be challenged
 #   - user1
