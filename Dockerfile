@@ -1,14 +1,12 @@
 FROM python:3.11-slim
 
-RUN dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y wine && \
-    rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN chmod +x ./engines/Chess-Coding-Adventure.exe
 
-CMD ["python3", "lichess-bot.py"]
+CMD ["python", "lichess-bot.py"]
