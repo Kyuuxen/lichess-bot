@@ -2,20 +2,20 @@ token: "LICHESS_BOT_TOKEN"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"        # Lichess base URL.
 
 engine:
-dir: "./engines/"
-name: "Chess-Coding-Adventure.exe"
-interpreter: "wine"
-interpreter_options: []
-working_dir: ""
-protocol: "uci"
-ponder: true             # Think on opponent's time.
-
+  dir: "./engines/"
+  name: "Chess-Coding-Adventure.exe"
+  interpreter: "wine"
+  interpreter_options: []
+  working_dir: ""
+  protocol: "uci"
+  ponder: true
+  
   polyglot:
     enabled: true                 # Activate polyglot book.
     book:
       standard:                    # List of book file paths for variant standard.
         - engines/Perfect2021.bin
-        - engines/book2.bin
+        # engines/book2.bin
 #     atomic:                      # List of book file paths for variant atomic.
 #       - engines/atomicbook1.bin
 #       - engines/atomicbook2.bin
@@ -186,7 +186,7 @@ greeting:
                                    # "all" - every game is written to a single file named "{Bot name} games.pgn"
 
 matchmaking:
-  allow_matchmaking: 'true'         # Set it to 'true' to challenge other bots.
+  allow_matchmaking: true         # Set it to 'true' to challenge other bots.
   allow_during_games: false        # Set it to 'true' to create challenges during long games.
   challenge_variant: "random"      # If set to 'random', the bot will choose one variant from the variants enabled in 'challenge.variants'.
   challenge_timeout: 2            # Create a challenge after being idle for 'challenge_timeout' minutes. The minimum is 1 minute.
