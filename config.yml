@@ -1,16 +1,14 @@
 token: "LICHESS_BOT_TOKEN"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"        # Lichess base URL.
 
-engine:                            # Engine settings.
-  dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "Chess-Coding-Adventure.exe"              # Binary name of the engine to use.
- interpreter: "wine"
- interpreter_options: []
-#   - "-jar"
-  working_dir: ""                  # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
-                                   # NOTE: If working_dir is set, the engine will look for files and directories relative to this directory, not where lichess-bot was launched. Absolute paths are unaffected.
-  protocol: "uci"                  # "uci", "xboard" or "homemade"
-  ponder: true                     # Think on opponent's time.
+engine:
+dir: "./engines/"
+name: "Chess-Coding-Adventure.exe"
+interpreter: "wine"
+interpreter_options: []
+working_dir: ""
+protocol: "uci"
+ponder: true             # Think on opponent's time.
 
   polyglot:
     enabled: true                 # Activate polyglot book.
